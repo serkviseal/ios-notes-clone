@@ -1,10 +1,14 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:paper/models/folder.dart';
-import 'package:paper/models/note.dart';
-import 'package:paper/screens/home.dart';
+import 'package:hive/hive.dart';
+
+import 'core/models/folder.dart';
+import 'core/models/note.dart';
+import 'views/screens/home.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,7 +16,7 @@ void main() async {
   Hive.init(appDocsDir.path);
   Hive.registerAdapter(NoteAdapter());
   Hive.registerAdapter(FolderAdapter());
-  runApp(Paper());
+  runApp(ProviderScope(child: Paper()));
 }
 
 class Paper extends StatelessWidget {
@@ -45,6 +49,10 @@ class Paper extends StatelessWidget {
           }),
       theme: CupertinoThemeData(
         primaryColor: CupertinoColors.black,
+        textTheme: CupertinoTextThemeData(
+          textStyle:
+              !Platform.isIOS ? TextStyle(fontFamily: 'SanFrancisco') : null,
+        ),
       ),
     );
   }

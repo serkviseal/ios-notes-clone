@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
-import 'package:paper/models/folder.dart';
-import 'package:paper/models/note.dart';
+import '../models/folder.dart';
+import '../models/note.dart';
 
 class HiveSerice {
   final notesBox = Hive.box('notes');

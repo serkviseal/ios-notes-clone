@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
-import 'package:paper/models/note.dart';
+import 'note.dart';
 part 'folder.g.dart';
 
 @HiveType(typeId: 1)

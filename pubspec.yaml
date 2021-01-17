@@ -13,8 +13,10 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.0
   flutter_hooks: ^0.15.0
+  flutter_riverpod: ^0.12.2
   hive: ^1.4.4+1
   hive_flutter: ^0.3.1
+  hooks_riverpod: ^0.12.2
   ionicons: ^0.0.3
   path_provider: ^1.6.27
 
@@ -29,3 +31,8 @@ flutter:
 
   assets:
     - assets/images/
+
+  fonts:
+    - family: SanFrancisco
+    - fonts:
+        - asset: assets/fonts/SF-Pro.ttf

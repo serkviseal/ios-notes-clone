@@ -6,11 +6,11 @@ import 'package:paper/utils/styles.dart';
 class Searchbar extends StatelessWidget {
   const Searchbar({
     Key key,
-    @required ValueNotifier<TextEditingController> controllerNotifier,
-  })  : _searchbarControllerNotifier = controllerNotifier,
+    @required TextEditingController controller,
+  })  : _controller = controller,
         super(key: key);
 
-  final ValueNotifier<TextEditingController> _searchbarControllerNotifier;
+  final TextEditingController _controller;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class Searchbar extends StatelessWidget {
       cursorHeight: 22,
       cursorColor: CustomColors.yellow,
       style: TextStyle(color: Colors.black),
-      controller: _searchbarControllerNotifier.value,
+      controller: _controller,
       decoration: BoxDecoration(
         color: Colors.blueGrey[200].withOpacity(0.30),
         borderRadius: BorderRadius.circular(8),
