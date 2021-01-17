@@ -4,6 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:paper/core/providers/dropdown_icon_provider.dart';
+import 'package:paper/core/services/hive_service.dart';
 import 'package:paper/utils/constants.dart';
 import 'package:paper/utils/styles.dart';
 import 'package:paper/views/widgets/bottom_bar.dart';
@@ -14,6 +15,7 @@ final dropdownIconProvider = StateNotifierProvider<DropdownIconState>((ref) {
 });
 
 class HomeScreen extends HookWidget {
+  final db = HiveSerice();
   @override
   Widget build(BuildContext context) {
     final _searchController =
@@ -63,9 +65,35 @@ class HomeScreen extends HookWidget {
                         color: CustomColors.yellow,
                         size: 18,
                       ),
-                      onTap: () {
-                        context.read(dropdownIconProvider).toggleIcon();
-                      },
+                      onTap: () =>
+                          context.read(dropdownIconProvider).toggleIcon(),
+                    ),
+                  ),
+                  Container(
+                    height: 200,
+                    margin: EdgeInsets.symmetric(vertical: 12),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[100],
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: ListView(
+                      physics: const NeverScrollableScrollPhysics(),
+                      children: [
+                        ListTile(
+                          title: Text("Notes"),
+                          leading: Icon(
+                            CupertinoIcons.folder,
+                            color: CustomColors.yellow,
+                          ),
+                          trailing: Row(
+                            children: [
+                              Text(
+                                "${db.notesBox.length + db.foldersBox.length}",
+                              )
+                            ],
+                          ),
+                        )
+                      ],
                     ),
                   )
                 ],

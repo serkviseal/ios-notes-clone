@@ -10,10 +10,10 @@ class HiveSerice {
     String message;
     try {
       if (object is Note) {
-        notesBox.put(object.title, object);
+        notesBox.add(object);
         message = 'saved';
       } else if (object is Folder) {
-        foldersBox.put(object.name, object);
+        foldersBox.add(object);
         message = 'saved';
       } else {
         message = UnknownObjectException().toString();
@@ -24,14 +24,14 @@ class HiveSerice {
     }
   }
 
-  String delete(Object object) {
+  String delete(Object object, int objectIndex) {
     String message;
     try {
       if (object is Note) {
-        notesBox.delete(object.title);
+        notesBox.deleteAt(objectIndex);
         message = 'deleted';
       } else if (object is Folder) {
-        foldersBox.delete(object.name);
+        foldersBox.deleteAt(objectIndex);
         message = 'deleted';
       } else {
         message = UnknownObjectException().toString();

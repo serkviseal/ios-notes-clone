@@ -16,37 +16,17 @@ void main() async {
   Hive.init(appDocsDir.path);
   Hive.registerAdapter(NoteAdapter());
   Hive.registerAdapter(FolderAdapter());
+  Hive.openBox('notes');
+  Hive.openBox('folders');
   runApp(ProviderScope(child: Paper()));
 }
 
 class Paper extends StatelessWidget {
-  Future<void> openBoxes() async {
-    Hive.openBox('notes');
-    Hive.openBox('folders');
-  }
-
   @override
   Widget build(BuildContext context) {
     return CupertinoApp(
       debugShowCheckedModeBanner: false,
-      home: FutureBuilder(
-          future: openBoxes(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done)
-              return HomeScreen();
-            else
-              return CupertinoPageScaffold(
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 25,
-                    ),
-                    child: Image.asset('assets/images/logo.png',
-                        fit: BoxFit.contain),
-                  ),
-                ),
-              );
-          }),
+      home: HomeScreen(),
       theme: CupertinoThemeData(
         primaryColor: CupertinoColors.black,
         textTheme: CupertinoTextThemeData(
