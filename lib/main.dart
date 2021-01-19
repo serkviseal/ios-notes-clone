@@ -16,8 +16,8 @@ void main() async {
   Hive.init(appDocsDir.path);
   Hive.registerAdapter(NoteAdapter());
   Hive.registerAdapter(FolderAdapter());
-  Hive.openBox('notes');
-  Hive.openBox('folders');
+  await Hive.openBox('notes');
+  await Hive.openBox('folders');
   runApp(ProviderScope(child: Paper()));
 }
 
@@ -28,6 +28,7 @@ class Paper extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),
       theme: CupertinoThemeData(
+        scaffoldBackgroundColor: Colors.grey[300],
         primaryColor: CupertinoColors.black,
         textTheme: CupertinoTextThemeData(
           textStyle:

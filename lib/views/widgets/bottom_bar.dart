@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:paper/utils/styles.dart';
 
 class BottomBar extends StatelessWidget {
+  final MainAxisAlignment axisAlignment;
+  final List<CustomIconButton> items;
   const BottomBar({
+    this.axisAlignment,
+    @required this.items,
     Key key,
   }) : super(key: key);
 
@@ -21,26 +24,9 @@ class BottomBar extends StatelessWidget {
         ),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: this.axisAlignment ?? MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          CustomIconButton(
-            icon: Icon(
-              CupertinoIcons.folder_badge_plus,
-              color: CustomColors.yellow,
-              size: 28,
-            ),
-            onPressed: () => print("//TODO: create folder"),
-          ),
-          CustomIconButton(
-            icon: Icon(
-              Ionicons.create_outline,
-              size: 28,
-              color: CustomColors.yellow,
-            ),
-            onPressed: () => print("//TODO: create note"),
-          )
-        ],
+        children: this.items,
       ),
     );
   }
