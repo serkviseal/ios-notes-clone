@@ -14,7 +14,7 @@ class FolderContentScreen extends HookWidget {
     return CustomScaffold(
       title: this.title,
       bottomNavigationBar: BottomBar(
-        axisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.end,
         items: [
           CustomIconButton(
             icon: Icon(
