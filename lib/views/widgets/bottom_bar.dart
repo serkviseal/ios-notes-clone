@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:paper/utils/styles.dart';
 
 class BottomBar extends StatelessWidget {
-  final MainAxisAlignment axisAlignment;
+  final MainAxisAlignment mainAxisAlignment;
   final List<CustomIconButton> items;
   const BottomBar({
-    this.axisAlignment,
+    this.mainAxisAlignment,
     @required this.items,
     Key key,
   }) : super(key: key);
@@ -24,7 +24,8 @@ class BottomBar extends StatelessWidget {
         ),
       ),
       child: Row(
-        mainAxisAlignment: this.axisAlignment ?? MainAxisAlignment.spaceBetween,
+        mainAxisAlignment:
+            this.mainAxisAlignment ?? MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: this.items,
       ),

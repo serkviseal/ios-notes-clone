@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DropdownIconState extends StateNotifier<IconData> {
-  DropdownIconState() : super(CupertinoIcons.chevron_forward);
+  DropdownIconState() : super(CupertinoIcons.chevron_down);
 
   void toggleIcon() {
     if (state == CupertinoIcons.chevron_right)
