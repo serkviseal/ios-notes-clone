@@ -16,8 +16,9 @@ void main() async {
   Hive.init(appDocsDir.path);
   Hive.registerAdapter(NoteAdapter());
   Hive.registerAdapter(FolderAdapter());
-  await Hive.openBox('notes');
   await Hive.openBox('folders');
+  Hive.box('folders').put("notes", Folder(name: "Notes", notes: []));
+  Hive.box('folders').put("trash", Folder(name: "Recently Deleted", notes: []));
   runApp(ProviderScope(child: Paper()));
 }
 
