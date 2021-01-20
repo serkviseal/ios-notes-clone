@@ -10,6 +10,7 @@ import 'package:paper/core/providers/folders_provider.dart';
 import 'package:paper/utils/constants.dart';
 import 'package:paper/utils/styles.dart';
 import 'package:paper/views/widgets/bottom_bar.dart';
+import 'package:paper/views/widgets/folder_source_tille.dart';
 import 'package:paper/views/widgets/folders_list.dart';
 import 'package:paper/views/widgets/search_bar.dart';
 
@@ -21,17 +22,18 @@ final foldersProvider = ChangeNotifierProvider<FoldersChangeNotifier>((ref) {
 });
 
 class HomeScreen extends HookWidget {
+  final String title = "Folders";
   @override
   Widget build(BuildContext context) {
     final _searchController =
         useTextEditingController.fromValue(TextEditingValue.empty);
     final folderNameController =
         useTextEditingController.fromValue(TextEditingValue.empty);
+    final dropdownIconState = useProvider(dropdownIconProvider.state);
+    final foldersNotifier = useProvider(foldersProvider);
     useEffect(() {
       return folderNameController.dispose;
     }, const []);
-    final dropdownIconState = useProvider(dropdownIconProvider.state);
-    final foldersNotifier = useProvider(foldersProvider);
 
     return Scaffold(
       bottomNavigationBar: BottomBar(
@@ -46,53 +48,11 @@ class HomeScreen extends HookWidget {
               context: context,
               builder: (_) {
                 String folderName = '';
-                return CupertinoAlertDialog(
-                  content: Column(
-                    children: [
-                      Text(
-                        "New Folder",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      ),
-                      Text("Enter a name for this folder."),
-                      SizedBox(height: 12),
-                      CupertinoTextField(
-                        controller: folderNameController,
-                        autocorrect: false,
-                        autofocus: true,
-                        cursorColor: CustomColors.yellow,
-                        placeholder: "Name",
-                        style: TextStyle(color: Colors.black),
-                        onChanged: (text) {
-                          folderName = text;
-                          print(folderName);
-                        },
-                      )
-                    ],
-                  ),
-                  actions: [
-                    TextButton(
-                      child: Text(
-                        "Cancel",
-                        style: TextStyle(color: CustomColors.yellow),
-                      ),
-                      onPressed: () => Navigator.pop(_),
-                    ),
-                    TextButton(
-                      child: Text(
-                        "Save",
-                        style: TextStyle(
-                          color: CustomColors
-                              .yellow, //TODO: the color must be grey when the textfield is empty
-                        ),
-                      ),
-                      onPressed: () {
-                        var folder = Folder(name: folderName, notes: []);
-                        foldersNotifier.addFolder(folder);
-                        return Navigator.pop(_);
-                      },
-                    ),
-                  ],
+                return _createFolder(
+                  folderNameController,
+                  folderName,
+                  _,
+                  foldersNotifier,
                 );
               },
             ),
@@ -112,11 +72,16 @@ class HomeScreen extends HookWidget {
         slivers: [
           CupertinoSliverNavigationBar(
             backgroundColor: Colors.grey[300],
-            largeTitle: Text("Folders"),
+            largeTitle: Text(title),
             trailing: GestureDetector(
               child: Text(
                 "Edit",
-                style: TextStyle(color: CustomColors.yellow),
+                style: CupertinoTheme.of(context)
+                    .textTheme
+                    .navActionTextStyle
+                    .copyWith(
+                      color: CustomColors.yellow,
+                    ),
               ),
               onTap: () => print("//TODO: add a new Note"),
             ),
@@ -142,6 +107,7 @@ class HomeScreen extends HookWidget {
                     ),
                   ),
                   buildFoldersList(
+                    pageTitle: title,
                     dropdownIconState: dropdownIconState,
                     folders: foldersNotifier.folders.values.toList(),
                   ),
@@ -175,41 +141,58 @@ class HomeScreen extends HookWidget {
       ),
     );
   }
-}
 
-class FoldersSourceTile extends StatelessWidget {
-  final String header;
-  final Function onTap;
-  final Widget trailing;
-
-  const FoldersSourceTile({
-    Key key,
-    @required this.trailing,
-    @required this.header,
-    this.onTap,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      focusColor: Colors.transparent,
-      selectedTileColor: Colors.transparent,
-      hoverColor: Colors.transparent,
-      title: Text(
-        this.header,
-        style: Theme.of(context)
-            .textTheme
-            .headline6
-            .copyWith(fontWeight: FontWeight.bold),
-        textAlign: TextAlign.left,
-      ),
-      trailing: this.trailing ??
-          Icon(
-            CupertinoIcons.chevron_right,
-            color: CustomColors.yellow,
-            size: 18,
+  CupertinoAlertDialog _createFolder(
+      TextEditingController folderNameController,
+      String folderName,
+      BuildContext _,
+      FoldersChangeNotifier foldersNotifier) {
+    return CupertinoAlertDialog(
+      content: Column(
+        children: [
+          Text(
+            "New Folder",
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
-      onTap: this.onTap,
+          Text("Enter a name for this folder."),
+          SizedBox(height: 12),
+          CupertinoTextField(
+            controller: folderNameController,
+            autocorrect: false,
+            autofocus: true,
+            cursorColor: CustomColors.yellow,
+            placeholder: "Name",
+            style: TextStyle(color: Colors.black),
+            onChanged: (text) {
+              folderName = text;
+              print(folderName);
+            },
+          )
+        ],
+      ),
+      actions: [
+        TextButton(
+          child: Text(
+            "Cancel",
+            style: TextStyle(color: CustomColors.yellow),
+          ),
+          onPressed: () => Navigator.pop(_),
+        ),
+        TextButton(
+          child: Text(
+            "Save",
+            style: TextStyle(
+              color: CustomColors
+                  .yellow, //TODO: the color must be grey when the textfield is empty
+            ),
+          ),
+          onPressed: () {
+            var folder = Folder(name: folderName, notes: []);
+            foldersNotifier.addFolder(folder);
+            return Navigator.pop(_);
+          },
+        ),
+      ],
     );
   }
 }

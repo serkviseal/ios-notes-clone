@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:paper/utils/styles.dart';
 
 class BottomBar extends StatelessWidget {
   final MainAxisAlignment mainAxisAlignment;
-  final List<CustomIconButton> items;
+  final List<Widget> items;
   const BottomBar({
     this.mainAxisAlignment,
     @required this.items,

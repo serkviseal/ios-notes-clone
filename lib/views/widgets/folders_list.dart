@@ -6,6 +6,7 @@ import 'package:paper/views/screens/folder_content_screen.dart';
 import 'folder_tile.dart';
 
 Container buildFoldersList({
+  @required String pageTitle,
   IconData dropdownIconState,
   @required List<Folder> folders,
 }) {
@@ -28,22 +29,22 @@ Container buildFoldersList({
             itemCount: folders.length,
             itemBuilder: (context, index) {
               var folder = folders[index];
-              return GestureDetector(
-                key: Key("$index"),
-                onTap: () => Navigator.push(
+              return FolderTile(
+                onPressed: () => Navigator.push(
                   context,
                   CupertinoPageRoute(
-                    builder: (context) =>
-                        FolderContentScreen(title: folder.name),
+                    builder: (context) => FolderContentScreen(
+                      folder: folder,
+                      previousScreenTitle: pageTitle,
+                    ),
                   ),
                 ),
-                child: FolderTile(
-                  folderName: folder.name,
-                  notesCount: folder.notes.length,
-                  icon: folder.name == 'Recently Deleted'
-                      ? CupertinoIcons.trash
-                      : null,
-                ),
+                key: Key(index.toString()),
+                folderName: folder.name,
+                notesCount: folder.notes.length,
+                icon: folder.name == 'Recently Deleted'
+                    ? CupertinoIcons.trash
+                    : null,
               );
             },
           ),

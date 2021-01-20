@@ -4,18 +4,22 @@ import '../models/folder.dart';
 class HiveSerice {
   final foldersBox = Hive.box('folders');
 
-  String save(Folder folder) {
+  String createFolder(Folder folder) {
     String key = folder.name
         .replaceAll(new RegExp(r'[^\w\s]+'), '')
         .replaceAll(' ', '-')
         .toLowerCase();
-    foldersBox.put(key, folder); //TODO: remove spaces in folder name
+    foldersBox.put(key, folder);
     return "saved";
   }
 
-  String delete(Folder folder) {
+  String deleteFolder(Folder folder) {
+    String key = folder.name
+        .replaceAll(new RegExp(r'[^\w\s]+'), '')
+        .replaceAll(' ', '-')
+        .toLowerCase();
     try {
-      foldersBox.delete(folder.name); //TODO: remove spaces in folder name
+      foldersBox.delete(key);
       return "deleted";
     } catch (e) {
       throw e;

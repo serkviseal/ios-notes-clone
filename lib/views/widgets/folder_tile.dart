@@ -7,8 +7,11 @@ class FolderTile extends StatelessWidget {
   final String folderName;
   final int notesCount;
   final IconData icon;
+  final Function onPressed, onLongPress;
   const FolderTile({
     @required this.folderName,
+    this.onLongPress,
+    this.onPressed,
     this.notesCount = 0,
     this.icon,
     Key key,
@@ -17,6 +20,9 @@ class FolderTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomListTile(
+      key: this.key,
+      onPressed: this.onPressed,
+      onLongPress: this.onLongPress,
       title: Text(this.folderName),
       leading: Icon(
         this.icon ?? CupertinoIcons.folder,
@@ -67,42 +73,68 @@ class CustomListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      highlightColor: this.highlightColor ?? Colors.transparent,
-      splashColor: this.splashColor ?? Colors.transparent,
-      onLongPress: this.onLongPress,
-      onTap: this.onPressed,
-      child: Container(
-        height: 35,
-        width: double.infinity,
-        padding: this.contentPadding ??
-            const EdgeInsets.symmetric(
-              horizontal: 8,
-            ),
-        color: this.backgroundColor,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              child: this.leading,
-              width: this.leadingWidth ?? 40,
-            ),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                height: 25,
-                width: screenWidth(context) / 3,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Flexible(child: this.title),
-                  ],
-                ),
+    return Dismissible(
+      background: Row(
+        children: [
+          Expanded(
+            flex: 2,
+            child: Container(
+              color: Colors.purple,
+              child: Icon(
+                CupertinoIcons.folder_fill,
+                color: Colors.white,
               ),
             ),
-            SizedBox(child: trailing, width: this.trailingWidth ?? 60)
-          ],
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              color: Colors.red,
+              child: Icon(
+                CupertinoIcons.trash_fill,
+                color: Colors.white,
+              ),
+            ),
+          )
+        ],
+      ),
+      direction: DismissDirection.endToStart,
+      key: this.key,
+      child: InkWell(
+        onLongPress: this.onLongPress,
+        onTap: this.onPressed,
+        child: Container(
+          height: 35,
+          width: double.infinity,
+          padding: this.contentPadding ??
+              const EdgeInsets.symmetric(
+                horizontal: 8,
+              ),
+          color: this.backgroundColor,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                child: this.leading,
+                width: this.leadingWidth ?? 40,
+              ),
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  height: 25,
+                  width: screenWidth(context) / 3,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Flexible(child: this.title),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(child: trailing, width: this.trailingWidth ?? 60)
+            ],
+          ),
         ),
       ),
     );

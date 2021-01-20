@@ -11,13 +11,13 @@ class FoldersChangeNotifier extends ChangeNotifier {
   int get foldersCount => _folders.length;
 
   void addFolder(Folder folder) {
-    _db.save(folder);
+    _db.createFolder(folder);
     _folders = _db.foldersBox.toMap().cast<String, Folder>();
     notifyListeners();
   }
 
   void deleteFolder(Folder folder) {
-    _db.delete(folder);
+    _db.deleteFolder(folder);
     _folders = _db.foldersBox.toMap().cast<String, Folder>();
     notifyListeners();
   }
