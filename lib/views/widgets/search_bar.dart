@@ -4,21 +4,25 @@ import 'package:ionicons/ionicons.dart';
 import 'package:paper/utils/styles.dart';
 
 class Searchbar extends StatelessWidget {
-  const Searchbar({
-    Key key,
-    @required TextEditingController controller,
-  })  : _controller = controller,
-        super(key: key);
-
   final TextEditingController _controller;
+  final FocusNode focusNode;
+  final Function onTyped, onSubmitted;
+  const Searchbar(
+      {Key key,
+      this.onSubmitted,
+      this.onTyped,
+      @required TextEditingController controller,
+      @required this.focusNode})
+      : _controller = controller,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return CupertinoTextField(
+      focusNode: this.focusNode,
       textInputAction: TextInputAction.search,
-      onChanged: (text) {
-        print("//TODO: searched item");
-      },
+      onChanged: (text) => this.onTyped(text),
+      onSubmitted: (text) => this.onSubmitted(text),
       placeholder: "Search",
       cursorHeight: 22,
       cursorColor: CustomColors.yellow,

@@ -73,68 +73,40 @@ class CustomListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Dismissible(
-      background: Row(
-        children: [
-          Expanded(
-            flex: 2,
-            child: Container(
-              color: Colors.purple,
-              child: Icon(
-                CupertinoIcons.folder_fill,
-                color: Colors.white,
-              ),
+    return InkWell(
+      onLongPress: this.onLongPress,
+      onTap: this.onPressed,
+      child: Container(
+        height: 35,
+        width: double.infinity,
+        padding: this.contentPadding ??
+            const EdgeInsets.symmetric(
+              horizontal: 8,
             ),
-          ),
-          Expanded(
-            flex: 1,
-            child: Container(
-              color: Colors.red,
-              child: Icon(
-                CupertinoIcons.trash_fill,
-                color: Colors.white,
-              ),
+        color: this.backgroundColor,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              child: this.leading,
+              width: this.leadingWidth ?? 40,
             ),
-          )
-        ],
-      ),
-      direction: DismissDirection.endToStart,
-      key: this.key,
-      child: InkWell(
-        onLongPress: this.onLongPress,
-        onTap: this.onPressed,
-        child: Container(
-          height: 35,
-          width: double.infinity,
-          padding: this.contentPadding ??
-              const EdgeInsets.symmetric(
-                horizontal: 8,
-              ),
-          color: this.backgroundColor,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                child: this.leading,
-                width: this.leadingWidth ?? 40,
-              ),
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 15),
-                  height: 25,
-                  width: screenWidth(context) / 3,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Flexible(child: this.title),
-                    ],
-                  ),
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                height: 25,
+                width: screenWidth(context) / 3,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Flexible(child: this.title),
+                  ],
                 ),
               ),
-              SizedBox(child: trailing, width: this.trailingWidth ?? 60)
-            ],
-          ),
+            ),
+            SizedBox(child: trailing, width: this.trailingWidth ?? 60)
+          ],
         ),
       ),
     );

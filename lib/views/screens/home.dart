@@ -4,6 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:paper/core/hooks/trailing_hook.dart';
 import 'package:paper/core/models/folder.dart';
 import 'package:paper/core/providers/dropdown_icon_provider.dart';
 import 'package:paper/core/providers/folders_provider.dart';
@@ -25,15 +26,31 @@ class HomeScreen extends HookWidget {
   final String title = "Folders";
   @override
   Widget build(BuildContext context) {
+    bool searchBarIsFocused = false;
+    final _focusNode = useFocusNode();
+    print(_focusNode.hasFocus);
+    useEffect(() {
+      _focusNode.addListener(() {
+        _focusNode.hasFocus
+            ? searchBarIsFocused = true
+            : searchBarIsFocused = false;
+      });
+      return;
+    }, [_focusNode]);
     final _searchController =
         useTextEditingController.fromValue(TextEditingValue.empty);
     final folderNameController =
         useTextEditingController.fromValue(TextEditingValue.empty);
     final dropdownIconState = useProvider(dropdownIconProvider.state);
     final foldersNotifier = useProvider(foldersProvider);
-    useEffect(() {
-      return folderNameController.dispose;
-    }, const []);
+    final trailing = useTrailing(focusNode: _focusNode);
+    final _searchbar = Searchbar(
+      onTyped: (value) {
+        print(_focusNode.hasFocus);
+      },
+      controller: _searchController,
+      focusNode: _focusNode,
+    );
 
     return Scaffold(
       bottomNavigationBar: BottomBar(
@@ -74,14 +91,17 @@ class HomeScreen extends HookWidget {
             backgroundColor: Colors.grey[300],
             largeTitle: Text(title),
             trailing: GestureDetector(
-              child: Text(
-                "Edit",
-                style: CupertinoTheme.of(context)
-                    .textTheme
-                    .navActionTextStyle
-                    .copyWith(
-                      color: CustomColors.yellow,
-                    ),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Text(
+                  trailing,
+                  style: CupertinoTheme.of(context)
+                      .textTheme
+                      .navActionTextStyle
+                      .copyWith(
+                        color: CustomColors.yellow,
+                      ),
+                ),
               ),
               onTap: () => print("//TODO: add a new Note"),
             ),
@@ -92,7 +112,7 @@ class HomeScreen extends HookWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Searchbar(controller: _searchController),
+                  _searchbar,
                   SizedBox(height: 15),
                   removeRipple(
                     FoldersSourceTile(
@@ -196,3 +216,5 @@ class HomeScreen extends HookWidget {
     );
   }
 }
+
+//TODO: Modify The page when the search bar is on focus
