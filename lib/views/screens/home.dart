@@ -28,7 +28,13 @@ class HomeScreen extends HookWidget {
   Widget build(BuildContext context) {
     bool searchBarIsFocused = false;
     final _focusNode = useFocusNode();
-    print(_focusNode.hasFocus);
+    final _searchController =
+        useTextEditingController.fromValue(TextEditingValue.empty);
+    final folderNameController =
+        useTextEditingController.fromValue(TextEditingValue.empty);
+    final dropdownIconState = useProvider(dropdownIconProvider.state);
+    final foldersNotifier = useProvider(foldersProvider);
+    final trailing = useTrailing(focusNode: _focusNode);
     useEffect(() {
       _focusNode.addListener(() {
         _focusNode.hasFocus
@@ -37,13 +43,6 @@ class HomeScreen extends HookWidget {
       });
       return;
     }, [_focusNode]);
-    final _searchController =
-        useTextEditingController.fromValue(TextEditingValue.empty);
-    final folderNameController =
-        useTextEditingController.fromValue(TextEditingValue.empty);
-    final dropdownIconState = useProvider(dropdownIconProvider.state);
-    final foldersNotifier = useProvider(foldersProvider);
-    final trailing = useTrailing(focusNode: _focusNode);
     final _searchbar = Searchbar(
       onTyped: (value) {
         print(_focusNode.hasFocus);
@@ -106,13 +105,18 @@ class HomeScreen extends HookWidget {
               onTap: () => print("//TODO: add a new Note"),
             ),
           ),
-          SliverFillRemaining(
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: _searchbar,
+            ),
+          ),
+          SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  _searchbar,
                   SizedBox(height: 15),
                   removeRipple(
                     FoldersSourceTile(

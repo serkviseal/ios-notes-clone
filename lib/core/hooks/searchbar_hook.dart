@@ -7,7 +7,7 @@ Widget useAppbar(
   @required FocusNode focusNode,
   @required Searchbar searchbar,
 }) {
-  Widget middle = null;
+  Widget middle;
 
   useValueChanged(focusNode.hasFocus, (_, __) {
     if (focusNode.hasFocus)
