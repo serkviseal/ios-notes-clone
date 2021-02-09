@@ -20,10 +20,7 @@ class FolderContentScreen extends HookWidget {
       title: this.folder.name,
       previousPageTitle: this.previousScreenTitle,
       trailing: CustomIconButton(
-        icon: Icon(
-          CupertinoIcons.ellipsis_circle,
-          size: 24,
-        ),
+        icon: Icon(CupertinoIcons.ellipsis_circle, size: 24),
         onPressed: () => print("//TODO: More"),
       ),
       bottomNavigationBar: BottomBar(
@@ -70,6 +67,7 @@ class CustomScaffold extends StatelessWidget {
         slivers: [
           //TODO: add Slivers attribute without removing CupertinoSliverNavigationBar
           CupertinoSliverNavigationBar(
+            automaticallyImplyTitle: true,
             actionsForegroundColor: CustomColors.yellow,
             previousPageTitle: this.previousPageTitle,
             automaticallyImplyLeading: true,

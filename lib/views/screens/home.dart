@@ -10,6 +10,7 @@ import 'package:paper/core/providers/dropdown_icon_provider.dart';
 import 'package:paper/core/providers/folders_provider.dart';
 import 'package:paper/utils/constants.dart';
 import 'package:paper/utils/styles.dart';
+import 'package:paper/views/screens/editor_screen.dart';
 import 'package:paper/views/widgets/bottom_bar.dart';
 import 'package:paper/views/widgets/folder_source_tille.dart';
 import 'package:paper/views/widgets/folders_list.dart';
@@ -26,7 +27,6 @@ class HomeScreen extends HookWidget {
   final String title = "Folders";
   @override
   Widget build(BuildContext context) {
-    bool searchBarIsFocused = false;
     final _focusNode = useFocusNode();
     final _searchController =
         useTextEditingController.fromValue(TextEditingValue.empty);
@@ -35,14 +35,7 @@ class HomeScreen extends HookWidget {
     final dropdownIconState = useProvider(dropdownIconProvider.state);
     final foldersNotifier = useProvider(foldersProvider);
     final trailing = useTrailing(focusNode: _focusNode);
-    useEffect(() {
-      _focusNode.addListener(() {
-        _focusNode.hasFocus
-            ? searchBarIsFocused = true
-            : searchBarIsFocused = false;
-      });
-      return;
-    }, [_focusNode]);
+
     final _searchbar = Searchbar(
       onTyped: (value) {
         print(_focusNode.hasFocus);
@@ -79,7 +72,11 @@ class HomeScreen extends HookWidget {
               size: 28,
               color: CustomColors.yellow,
             ),
-            onPressed: () => print("//TODO: create note"),
+            onPressed: () => Navigator.push(
+              context,
+              CupertinoPageRoute(
+                  builder: (_) => EditorScreen(previousTitle: "Folders")),
+            ),
           )
         ],
       ),
