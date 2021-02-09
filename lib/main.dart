@@ -27,6 +27,11 @@ class Paper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoApp(
+      localizationsDelegates: [
+        DefaultMaterialLocalizations.delegate,
+        DefaultCupertinoLocalizations.delegate,
+        DefaultWidgetsLocalizations.delegate,
+      ],
       color: CustomColors.yellow,
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),

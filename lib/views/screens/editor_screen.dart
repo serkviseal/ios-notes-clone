@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:paper/core/hooks/zefyr_hook.dart';
+import 'package:paper/core/hooks/editor_hook.dart';
 import 'package:paper/utils/styles.dart';
-import 'package:zefyr/zefyr.dart';
 
 class EditorScreen extends HookWidget {
   final String previousTitle;
@@ -11,7 +10,7 @@ class EditorScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _editor = useZefyr(context);
+    final _editor = useQuillEditor();
 
     return CupertinoPageScaffold(
       backgroundColor: Colors.grey[50],
@@ -34,10 +33,10 @@ class EditorScreen extends HookWidget {
           ),
         ),
       ),
-      child: Material(
-        child: ZefyrScaffold(
-          child: _editor,
-          key: GlobalKey(debugLabel: "editor"),
+      child: SafeArea(
+        child: Container(
+          child: Material(child: _editor),
+          padding: EdgeInsets.all(12),
         ),
       ),
     );

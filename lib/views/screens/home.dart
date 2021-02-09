@@ -99,7 +99,14 @@ class HomeScreen extends HookWidget {
                       ),
                 ),
               ),
-              onTap: () => print("//TODO: add a new Note"),
+              onTap: () => Navigator.push(
+                context,
+                CupertinoPageRoute(
+                  builder: (_) => EditorScreen(
+                    previousTitle: "Folders",
+                  ),
+                ),
+              ),
             ),
           ),
           SliverToBoxAdapter(

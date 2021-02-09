@@ -4,7 +4,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:paper/core/models/folder.dart';
 import 'package:paper/utils/styles.dart';
+import 'package:paper/views/screens/editor_screen.dart';
 import 'package:paper/views/widgets/bottom_bar.dart';
+import 'package:paper/extensions/string_extension.dart';
 
 class FolderContentScreen extends HookWidget {
   final String previousScreenTitle;
@@ -33,7 +35,14 @@ class FolderContentScreen extends HookWidget {
               size: 28,
               color: CustomColors.yellow,
             ),
-            onPressed: () => print("//TODO: create note"),
+            onPressed: () => Navigator.push(
+              context,
+              CupertinoPageRoute(
+                builder: (_) => EditorScreen(
+                  previousTitle: "${folder.name}".shorten(),
+                ),
+              ),
+            ),
           )
         ],
       ),
