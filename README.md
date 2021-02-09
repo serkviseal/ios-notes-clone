@@ -1,14 +1,17 @@
-# Paper
+<div align="center">
+<h1> Paper</h1>
 
-Clone of the famous Notes App that comes by default in all Apple devices.
+iOS Notes app clone.
 
-## Getting Started
+</div>
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<h2>TODO</h2>
+- [ ] Search screen with suggestions
+- [x] text editor for writing notes
+- [ ] upload images in a note
+- [ ] lines and grids
+- [ ] pin Note
+- [ ] save note locally
+- [ ] save notes on the cloud
+- [ ] share note on social media
+- [ ] Lock a note/folder
