@@ -32,9 +32,16 @@ class __TextEditorState extends HookState<ZefyrEditor, _TextEditor> {
   @override
   ZefyrEditor build(BuildContext context) {
     return ZefyrEditor(
+      autofocus: true,
       controller: _controller,
       focusNode: _focusNode,
       padding: EdgeInsets.all(12),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _focusNode.dispose();
   }
 }

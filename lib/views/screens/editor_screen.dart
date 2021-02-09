@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:paper/core/hooks/zefyr_hook.dart';
 import 'package:paper/utils/styles.dart';
+import 'package:zefyr/zefyr.dart';
 
 class EditorScreen extends HookWidget {
   final String previousTitle;
@@ -33,7 +34,12 @@ class EditorScreen extends HookWidget {
           ),
         ),
       ),
-      child: Container(child: _editor),
+      child: Material(
+        child: ZefyrScaffold(
+          child: _editor,
+          key: GlobalKey(debugLabel: "editor"),
+        ),
+      ),
     );
   }
 }
