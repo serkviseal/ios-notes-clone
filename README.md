@@ -5,7 +5,7 @@ iOS Notes app clone.
 
 </div>
 
-<h2>TODO</h2>
+### TODO
 - [ ] Search screen with suggestions
 - [x] text editor for writing notes
 - [ ] upload images in a note
