@@ -31,28 +31,27 @@ These instructions will get you a copy of the project up and running on your loc
 - An IDE/Text Editor (Android Studio, VS Code or IntelliJ IDEA)
 - An Android device (physical or emulator)
 
-After making sure that all the prerequisites are met, follow the steps below:
-** PS: **
+After all the prerequisites are met, follow the steps below: <br/>
+Make sure the emulator is already running and if you are using a physical device, make sure it is plugged and and USB debugging is activated. Run the command bellow to see if flutter has detected your device:
+
+```
+$ flutter devices
+```
+
+Then run the following commands to clone, install and run the app.
 
 ```
 $ git clone silverhairs/ios-notes-clone.git
 $ cd ios-notes-clone/
 $ flutter pub get
+$ flutter run
 ```
 
-And repeat
-
-```
-until **finished**
-```
-
-End with an example of getting some data out of the system or using it for a little demo.
-
-## 🔧 Running the tests <a name = "tests"></a>
+## 🔧 Running the tests (Comming soon)
 
 Explain how to run the automated tests for this system.
 
-### Break down into end to end tests
+### Integration tests
 
 Explain what these tests test and why
 
@@ -60,44 +59,22 @@ Explain what these tests test and why
 Give an example
 ```
 
-### And coding style tests
+### Widget tests
 
 Explain what these tests test and why
 
 ```
 Give an example
 ```
-
-## 🎈 Usage <a name="usage"></a>
-
-Add notes about how to use the system.
-
-## 🚀 Deployment <a name = "deployment"></a>
-
-Add additional notes about how to deploy this on a live system.
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
-- [NodeJs](https://nodejs.org/en/) - Server Environment
-
-## ✍️ Authors <a name = "authors"></a>
-
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
-
-See also the list of [contributors](https://github.com/silverhairs/ios-notes-clone/contributors) who participated in this project.
-
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+- [Flutter](https://www.flutter.dev/) - Framework
+- [Dart](https://dart.dev/) - Programming Language
 
 ---
 
-### TODO
+## 📝 TODO
 
 - [ ] search screen with suggestions
 - [x] text editor
