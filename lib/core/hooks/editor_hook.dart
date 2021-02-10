@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_quill/widgets/controller.dart';
@@ -13,6 +16,14 @@ class _QuillTextEditor extends Hook<Widget> {
 
 class __QuillTextEditorState extends HookState<Widget, _QuillTextEditor> {
   final QuillController _controller = QuillController.basic();
+  FocusNode _focusNode;
+  var data;
+
+  @override
+  void initHook() {
+    super.initHook();
+    _focusNode = FocusNode();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,15 +32,36 @@ class __QuillTextEditorState extends HookState<Widget, _QuillTextEditor> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Expanded(
-          child: QuillEditor.basic(
+          child: QuillEditor(
+            padding: EdgeInsets.zero,
+            enableInteractiveSelection: true,
+            scrollable: true,
+            scrollController: ScrollController(),
+            focusNode: _focusNode,
+            expands: false,
+            autoFocus: true,
             controller: _controller,
             readOnly: false,
           ),
         ),
         QuillToolbar.basic(
           controller: _controller,
+          uploadFileCallback: _uploadImage,
         )
       ],
     );
   }
+
+  Future<String> _uploadImage(File file) async {
+    // return Completer<String>().future();
+    //TODO: FIXME: Later
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _focusNode.dispose();
+  }
 }
+
+//TODO: Save document after edit. Hint 👇

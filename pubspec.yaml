@@ -18,8 +18,10 @@ dependencies:
   hive: ^1.4.4+1
   hive_flutter: ^0.3.1
   hooks_riverpod: ^0.12.2
+  image_picker: ^0.6.7+22
   ionicons: ^0.0.3
   path_provider: ^1.6.27
+  quill_delta: ^2.0.0
 
 dev_dependencies:
   flutter_test:
