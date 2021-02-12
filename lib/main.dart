@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:paper/utils/styles.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:hive/hive.dart';
 
@@ -32,15 +31,15 @@ class Paper extends StatelessWidget {
         DefaultCupertinoLocalizations.delegate,
         DefaultWidgetsLocalizations.delegate,
       ],
-      color: CustomColors.yellow,
+      color: CupertinoColors.systemOrange,
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),
       theme: CupertinoThemeData(
         scaffoldBackgroundColor: Colors.grey[300],
-        primaryColor: CustomColors.yellow,
-        primaryContrastingColor: CustomColors.yellow,
+        primaryColor: CupertinoColors.systemOrange,
+        primaryContrastingColor: CupertinoColors.systemOrange,
         textTheme: CupertinoTextThemeData(
-          primaryColor: CustomColors.yellow,
+          primaryColor: CupertinoColors.systemOrange,
           textStyle:
               !Platform.isIOS ? TextStyle(fontFamily: 'SanFrancisco') : null,
         ),

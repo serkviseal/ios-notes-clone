@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:paper/utils/styles.dart';
 
 class FoldersSourceTile extends StatelessWidget {
   final String header;
@@ -31,7 +30,7 @@ class FoldersSourceTile extends StatelessWidget {
       trailing: this.trailing ??
           Icon(
             CupertinoIcons.chevron_right,
-            color: CustomColors.yellow,
+            color: CupertinoColors.systemOrange,
             size: 18,
           ),
       onTap: this.onTap,

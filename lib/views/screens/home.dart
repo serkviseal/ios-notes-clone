@@ -50,7 +50,7 @@ class HomeScreen extends HookWidget {
           CustomIconButton(
             icon: Icon(
               CupertinoIcons.folder_badge_plus,
-              color: CustomColors.yellow,
+              color: CupertinoColors.systemOrange,
               size: 28,
             ),
             onPressed: () => showCupertinoDialog(
@@ -70,7 +70,7 @@ class HomeScreen extends HookWidget {
             icon: Icon(
               Ionicons.create_outline,
               size: 28,
-              color: CustomColors.yellow,
+              color: CupertinoColors.systemOrange,
             ),
             onPressed: () => Navigator.push(
               context,
@@ -95,7 +95,7 @@ class HomeScreen extends HookWidget {
                       .textTheme
                       .navActionTextStyle
                       .copyWith(
-                        color: CustomColors.yellow,
+                        color: CupertinoColors.systemOrange,
                       ),
                 ),
               ),
@@ -126,7 +126,7 @@ class HomeScreen extends HookWidget {
                     FoldersSourceTile(
                       trailing: Icon(
                         dropdownIconState,
-                        color: CustomColors.yellow,
+                        color: CupertinoColors.systemOrange,
                         size: 16,
                       ),
                       header: "On My Phone",
@@ -188,7 +188,7 @@ class HomeScreen extends HookWidget {
             controller: folderNameController,
             autocorrect: false,
             autofocus: true,
-            cursorColor: CustomColors.yellow,
+            cursorColor: CupertinoColors.systemOrange,
             placeholder: "Name",
             style: TextStyle(color: Colors.black),
             onChanged: (text) {
@@ -202,7 +202,7 @@ class HomeScreen extends HookWidget {
         TextButton(
           child: Text(
             "Cancel",
-            style: TextStyle(color: CustomColors.yellow),
+            style: TextStyle(color: CupertinoColors.systemOrange),
           ),
           onPressed: () => Navigator.pop(_),
         ),
@@ -210,8 +210,8 @@ class HomeScreen extends HookWidget {
           child: Text(
             "Save",
             style: TextStyle(
-              color: CustomColors
-                  .yellow, //TODO: the color must be grey when the textfield is empty
+              color: CupertinoColors
+                  .systemOrange, //TODO: the color must be grey when the textfield is empty
             ),
           ),
           onPressed: () {

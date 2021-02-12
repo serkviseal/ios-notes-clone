@@ -33,7 +33,7 @@ class FolderContentScreen extends HookWidget {
             icon: Icon(
               Ionicons.create_outline,
               size: 28,
-              color: CustomColors.yellow,
+              color: CupertinoColors.systemOrange,
             ),
             onPressed: () => Navigator.push(
               context,
@@ -77,7 +77,7 @@ class CustomScaffold extends StatelessWidget {
           //TODO: add Slivers attribute without removing CupertinoSliverNavigationBar
           CupertinoSliverNavigationBar(
             automaticallyImplyTitle: true,
-            actionsForegroundColor: CustomColors.yellow,
+            actionsForegroundColor: CupertinoColors.systemOrange,
             previousPageTitle: this.previousPageTitle,
             automaticallyImplyLeading: true,
             backgroundColor: this.backgroundColor ?? Colors.grey[300],

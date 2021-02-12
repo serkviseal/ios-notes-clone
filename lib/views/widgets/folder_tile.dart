@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:paper/utils/constants.dart';
-import 'package:paper/utils/styles.dart';
 
 class FolderTile extends StatelessWidget {
   final String folderName;
@@ -26,7 +25,7 @@ class FolderTile extends StatelessWidget {
       title: Text(this.folderName),
       leading: Icon(
         this.icon ?? CupertinoIcons.folder,
-        color: CustomColors.yellow,
+        color: CupertinoColors.systemOrange,
       ),
       trailing: SizedBox(
         height: 14,

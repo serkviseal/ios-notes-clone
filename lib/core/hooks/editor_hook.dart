@@ -64,4 +64,8 @@ class __QuillTextEditorState extends HookState<Widget, _QuillTextEditor> {
   }
 }
 
-//TODO: Save document after edit. Hint 👇
+//TODO: Save document after edit. 👇
+/// The editor controller has a [document] attribute that has a
+/// [toDelta()] method and with the delta_quill pkg, a delta object
+/// has a [toJson()] method that returns a List<Map<dynamic>> making
+/// it even easier since Hive can read List and Map.

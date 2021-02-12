@@ -4,6 +4,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:paper/core/hooks/editor_hook.dart';
 import 'package:paper/utils/styles.dart';
 
+import 'package:paper/views/widgets/note_more_actions_bottom_sheet.dart';
+
 class EditorScreen extends HookWidget {
   final String previousTitle;
   const EditorScreen({@required this.previousTitle});
@@ -23,7 +25,12 @@ class EditorScreen extends HookWidget {
             children: [
               CustomIconButton(
                 icon: Icon(CupertinoIcons.ellipsis_circle, size: 24),
-                onPressed: () => print("//TODO: More"),
+                onPressed: () => showModalBottomSheet(
+                    context: context,
+                    backgroundColor: Colors.transparent,
+                    builder: (context) {
+                      return NoteMoreActionsBottomSheet();
+                    }),
               ),
               Text(
                 "Done",

@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:paper/utils/styles.dart';
 
 class Searchbar extends StatelessWidget {
   final TextEditingController _controller;
@@ -25,7 +24,7 @@ class Searchbar extends StatelessWidget {
       onSubmitted: (text) => this.onSubmitted(text),
       placeholder: "Search",
       cursorHeight: 22,
-      cursorColor: CustomColors.yellow,
+      cursorColor: CupertinoColors.systemOrange,
       style: TextStyle(color: Colors.black),
       controller: _controller,
       decoration: BoxDecoration(
