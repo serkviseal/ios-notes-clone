@@ -31,6 +31,8 @@ These instructions will get you a copy of the project up and running on your loc
 - An IDE/Text Editor (Android Studio, VS Code or IntelliJ IDEA)
 - An Android device (physical or emulator)
 
+**PS: To run the app on an iOS simulator, you need XCode**
+
 After all the prerequisites are met, follow the steps below: <br/>
 Make sure the emulator is already running and if you are using a physical device, make sure it is plugged and and USB debugging is activated. Run the command bellow to see if flutter has detected your device:
 
@@ -47,25 +49,6 @@ $ flutter pub get
 $ flutter run
 ```
 
-## 🔧 Running the tests (Comming soon)
-
-Explain how to run the automated tests for this system.
-
-### Integration tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### Widget tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
