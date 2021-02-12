@@ -27,6 +27,7 @@ class Paper extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoApp(
       localizationsDelegates: [
+        // Adding MaterialLocalizations cause flutter_quill pkg depends on them.
         DefaultMaterialLocalizations.delegate,
         DefaultCupertinoLocalizations.delegate,
         DefaultWidgetsLocalizations.delegate,
@@ -39,10 +40,13 @@ class Paper extends StatelessWidget {
         primaryColor: CupertinoColors.systemOrange,
         primaryContrastingColor: CupertinoColors.systemOrange,
         textTheme: CupertinoTextThemeData(
-          primaryColor: CupertinoColors.systemOrange,
-          textStyle:
-              !Platform.isIOS ? TextStyle(fontFamily: 'SanFrancisco') : null,
-        ),
+            primaryColor: CupertinoColors.systemOrange,
+            textStyle: !Platform.isIOS
+                ? DefaultTextStyle.of(context)
+                    .style
+                    .copyWith(fontFamily: 'SanFrancisco')
+                : DefaultTextStyle.of(context).style),
+        //SanFrancisco is the default font on iOS and it is a better quality.
       ),
     );
   }
