@@ -10,7 +10,7 @@
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
 [![GitHub Issues](https://img.shields.io/github/issues/silverhairs/ios-notes-clone.svg)](https://github.com/silverhairs/ios-notes-clone/issues)
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/silverhairs/ios-notes-clone.svg)](https://github.com/silverhairs/ios-notes-clone/pulls)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 </div>
 
