@@ -1,9 +1,5 @@
-<p align="center">
-  <a href="" rel="noopener">
- <img width=200px height=200px src="https://github.com/silverhairs/ios-notes-clone/blob/main/assets/images/logo.png" alt="Paper logo"></a>
-</p>
 
-<h3 align="center">Paper Notes</h3>
+<h1 align="center">iOS Notes App Clone</h1>
 
 <div align="center">
 
