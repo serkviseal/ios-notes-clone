@@ -1,13 +1,9 @@
-<p align="center">
-  <a href="" rel="noopener">
- <img width=200px height=200px src="https://github.com/silverhairs/ios-notes-clone/blob/main/assets/images/logo.png" alt="Paper logo"></a>
-</p>
 
-<h3 align="center">Paper Notes</h3>
+<h1 align="center">iOS Notes App Clone</h1>
 
 <div align="center">
 
-[![Status](https://img.shields.io/badge/status-active-success.svg)]()
+![Status](https://github.com/silverhairs/ios-notes-clone/workflows/Dart/badge.svg?branch=main)
 [![GitHub Issues](https://img.shields.io/github/issues/silverhairs/ios-notes-clone.svg)](https://github.com/silverhairs/ios-notes-clone/issues)
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/silverhairs/ios-notes-clone.svg)](https://github.com/silverhairs/ios-notes-clone/pulls)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
