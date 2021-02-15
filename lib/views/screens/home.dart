@@ -134,9 +134,9 @@ class HomeScreen extends HookWidget {
                           context.read(dropdownIconProvider).toggleIcon(),
                     ),
                   ),
-                  buildFoldersList(
+                  FoldersList(
                     pageTitle: title,
-                    dropdownIconState: dropdownIconState,
+                    dropdownIcon: dropdownIconState,
                     folders: foldersNotifier.folders.values.toList(),
                   ),
                   SizedBox(height: 15),

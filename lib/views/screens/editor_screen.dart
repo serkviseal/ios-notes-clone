@@ -26,10 +26,11 @@ class EditorScreen extends HookWidget {
               CustomIconButton(
                 icon: Icon(CupertinoIcons.ellipsis_circle, size: 24),
                 onPressed: () => showModalBottomSheet(
+                    isScrollControlled: true,
                     context: context,
                     backgroundColor: Colors.transparent,
                     builder: (context) {
-                      return NoteMoreActionsBottomSheet();
+                      return NoteActionsBottomSheet();
                     }),
               ),
               Text(

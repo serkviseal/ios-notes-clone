@@ -53,7 +53,7 @@ class CustomListTile extends StatelessWidget {
   final Function onPressed, onLongPress;
   final Widget leading, title, trailing;
   final EdgeInsetsGeometry contentPadding;
-  final double leadingWidth, trailingWidth;
+  final double leadingWidth, trailingWidth, height;
   final Color highlightColor, splashColor, backgroundColor;
   const CustomListTile({
     Key key,
@@ -68,6 +68,7 @@ class CustomListTile extends StatelessWidget {
     this.trailingWidth,
     this.highlightColor,
     this.splashColor,
+    this.height = 55,
   }) : super(key: key);
 
   @override
@@ -76,7 +77,7 @@ class CustomListTile extends StatelessWidget {
       onLongPress: this.onLongPress,
       onTap: this.onPressed,
       child: Container(
-        height: 35,
+        height: this.height,
         width: double.infinity,
         padding: this.contentPadding ??
             const EdgeInsets.symmetric(
@@ -87,7 +88,7 @@ class CustomListTile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
-              child: this.leading,
+              child: this.leading ?? SizedBox(width: 2),
               width: this.leadingWidth ?? 40,
             ),
             Expanded(

@@ -45,7 +45,7 @@ class Paper extends StatelessWidget {
                 ? DefaultTextStyle.of(context)
                     .style
                     .copyWith(fontFamily: 'SanFrancisco')
-                : DefaultTextStyle.of(context).style),
+                : DefaultTextStyle.of(context).style,),
         //SanFrancisco is the default font on iOS and it is a better quality.
       ),
     );
